@@ -8,7 +8,7 @@ git remote add origin https://github.com/sonotech2406/AKS-Terraform.git
 git add .
 
 # Commit the changes
-git commit -m "Initial commit"
+git commit -m "confict issue resolved"
 
 # Push the code to GitHub
-git push origin main
+git push -u origin master
