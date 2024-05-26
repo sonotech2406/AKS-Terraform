@@ -14,7 +14,7 @@ keyvault_rg = "aksdemo-rg"
 
 keyvault_name = "aksdemocluster-kv"
 
-azure_region = "australiaeast"
+azure_region = "northeurope"
 
 resource_group = "aksdemocluster-rg"
 
