@@ -10,13 +10,13 @@ vnetcidr = ["10.0.0.0/24"]
 
 subnetcidr = ["10.0.0.0/25"]
 
-keyvault_rg = "aksdemo-rg"
+keyvault_rg = "aks-new-rg"
 
-keyvault_name = "aksdemocluster-kv"
+keyvault_name = "aks-keyvault-1"
 
 azure_region = "northeurope"
 
-resource_group = "aksdemocluster-rg"
+resource_group = "aks-new-rg"
 
 cluster_name = "aksdemocluster"
 
@@ -28,7 +28,7 @@ kubernetes_version = "1.21.7"
 
 agent_pools = {
       name            = "pool1"
-      count           = 2
+      count           = 3
       vm_size         = "Standard_D2_v2"
       os_disk_size_gb = "30"
     }
