@@ -12,6 +12,7 @@ data "azurerm_key_vault_secret" "spn_id" {
   name         = var.clientidkvsecret
   key_vault_id = data.azurerm_key_vault.azure_vault.id
 }
+
 data "azurerm_key_vault_secret" "spn_secret" {
   name         = var.spnkvsecret
   key_vault_id = data.azurerm_key_vault.azure_vault.id
@@ -28,9 +29,8 @@ resource "azurerm_subnet" "aks_subnet" {
   name                 = "aks_subnet"
   resource_group_name  = azurerm_resource_group.aks_rg.name
   virtual_network_name = azurerm_virtual_network.aks_vnet.name
-  address_prefixes       = var.subnetcidr
+  address_prefixes     = var.subnetcidr
 }
-
 
 resource "azurerm_resource_group" "aks_rg" {
   name     = var.resource_group
@@ -42,7 +42,6 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
   location            = azurerm_resource_group.aks_rg.location
   resource_group_name = azurerm_resource_group.aks_rg.name
   dns_prefix          = var.dns_name
-}
 
   default_node_pool {
     name            = var.agent_pools.name
@@ -58,8 +57,13 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
     }
   }
 
-  role_based_access_control {
-    enabled = true
+  role_based_access_control_enabled = true
+
+  azure_active_directory_role_based_access_control {
+    managed = true
+    admin_group_object_ids = [
+      "77228fa8-54a0-4a4a-a8df-955234be99dc"
+    ]
   }
 
   service_principal {
@@ -68,6 +72,6 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
   }
 
   tags = {
-    Environment = "Demo"
+    Environment = "Preprod"
   }
 }
