@@ -19,9 +19,17 @@ steps:
     backendAzureRmStorageAccountName: 'abiodunstorage'
     backendAzureRmContainerName: 'terracont'
     backendAzureRmKey: 'tf/terraform.tfstate'
+
 - task: TerraformTaskV4@4
   displayName: Terraform plan
   inputs:
     provider: 'azurerm'
     command: 'plan'
+    environmentServiceNameAzureRM: 'Azure Pass - Sponsorship(91d5a716-b2a7-41f5-862b-148f7a30f56a)'
+
+- task: TerraformTaskV4@4
+  displayName: Terraform Apply
+  inputs:
+    provider: 'azurerm'
+    command: 'apply'
     environmentServiceNameAzureRM: 'Azure Pass - Sponsorship(91d5a716-b2a7-41f5-862b-148f7a30f56a)'
