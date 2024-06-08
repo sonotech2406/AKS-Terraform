@@ -16,11 +16,11 @@ keyvault_name = "aks-keyvault-1"
 
 azure_region = "northeurope"
 
-resource_group = "aks-new-rg"
+resource_group = "aks-cluster-rg"
 
-cluster_name = "aksdemocluster"
+cluster_name = "aks-preprod-cluster"
 
-dns_name = "aksdemocluster"
+dns_name = "aks-preprod-cluster"
 
 admin_username = "aksuser"
 
